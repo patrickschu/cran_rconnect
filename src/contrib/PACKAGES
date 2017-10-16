@@ -1,0 +1,5 @@
+Package: sentimenttools
+Version: 0.0.0.9000
+Depends: R (>= 3.0.0)
+MD5sum: 32b0a3576988e753c2647598dbb273f6
+NeedsCompilation: no
