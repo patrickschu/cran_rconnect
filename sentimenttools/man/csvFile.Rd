@@ -17,3 +17,6 @@ dataframe with contents of the CSV file
 \description{
 csvFile processes the input from csvFileInput and reads it into a \code{data.frame}. Adapted from \link{https://shiny.rstudio.com/articles/modules.html}
 }
+\details{
+adapted from \url{https://shiny.rstudio.com/articles/modules.html}
+}

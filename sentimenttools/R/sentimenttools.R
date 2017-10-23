@@ -1,5 +1,31 @@
 # just put this in for server hash test
 
+
+
+csvFile_local <- function(input, output, session, directory, file_name){
+  #' csvFile_local
+  #' 
+  #' csvFile_local is an alternative to `csvFile()`, 
+  #' this reads a local file instead of calling the upload function
+  #' calls on `read.csv()`
+  #' @param directory name of the directory to look for a file
+  #' @param file_name name of the csv file contained in dir
+  #' @return a `data.frame` of the content of the file_name
+  #' @export
+  #' @details here be details
+  
+  path = file.path(directory, file_name)
+  cat("Reading files from", path)
+  if (!file.exists(path)) {
+    stop(paste("File", path, "not found"))
+  }
+  spreadsheet <- read.csv(file.path(directory, file_name),
+                          colClasses = c("created_at" = "POSIXct", "rel_deliver" = 'logical',"rel_hebtoyou" = 'logical',"rel_shipt" = 'logical',"rel_instacart"= "logical"))
+  cat("File", path, "was imported, size is", file.size(path), "bytes\n" )
+  spreadsheet
+}
+
+
 #Collection of Shiny Tools for Sentiment Analysis
 
 YearMatcher <- function(year_string) {
@@ -21,7 +47,7 @@ YearMatcher <- function(year_string) {
 #
 # Module file_in
 
-csvFile <- function(input, output, session, stringsAsFactors, file_name="file") {
+  csvFile <- function(input, output, session, stringsAsFactors, file_name="file") {
   #' csvFile
   #' 
   #' csvFile processes the input from csvFileInput and reads it into a \code{data.frame}. Adapted from \link{https://shiny.rstudio.com/articles/modules.html}
@@ -29,6 +55,7 @@ csvFile <- function(input, output, session, stringsAsFactors, file_name="file") 
   #' @param file_name is the name of the file; needs to match \code{file_name} fed into \code{csvFileInput}, the UI function.
   #' @export
   #' @return dataframe with contents of the CSV file
+  #' @details adapted from \url{https://shiny.rstudio.com/articles/modules.html}
   # The selected file, if any
   userFile <- reactive({
     # If no file is selected, don't do anything: https://shiny.rstudio.com/reference/shiny/latest/validate.html
@@ -55,7 +82,7 @@ csvFile <- function(input, output, session, stringsAsFactors, file_name="file") 
   return(dataframe)
 }
 
-wordfinder <- function(input_text, search_term, lower_case = TRUE)
+  wordfinder <- function(input_text, search_term, lower_case = TRUE)
   {
   #' Wordfinder
   #' 
