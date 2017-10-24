@@ -1,6 +1,6 @@
 Package: sentimenttools
 Title: Collection of tools for sentiment visualization on Shiny. 
-Version: 0.0.0.9000
+Version: 0.0.1.9000
 Authors@R: c(person("Patrick", "Schultz", email= "patrickschultz@utexas.edu", role=c("aut", "cre")), person("Lars", "Hinrichs", email="lars@texasenglish.org", role=c("aut")))
 Description: This helps us handle our Shiny App.
 Depends: R (>= 3.0.0)
